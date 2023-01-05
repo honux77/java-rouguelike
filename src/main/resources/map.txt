@@ -1,0 +1,15 @@
+플레이어 정보
+Player{initial=@, name='Pino', hp=30, mp=5, atk=3, def=3, gold=0}
+
+몬스터 리스트
+Monster{initial=O, name='Slime', hp=6, atk=4, def=2, atkPlus=1, defPlus=1, gold=1}
+Monster{initial=S, name='Snake', hp=9, atk=5, def=3, atkPlus=2, defPlus=2, gold=2}
+Monster{initial=W, name='Bat', hp=10, atk=6, def=2, atkPlus=3, defPlus=3, gold=3}
+Monster{initial=Q, name='Boss', hp=20, atk=10, def=5, atkPlus=10, defPlus=10, gold=10}
+
+지도 표시
+===============
+|P.EQ.O.O...OP|
+|W..W.........|
+|S.@....O....S|
+===============
