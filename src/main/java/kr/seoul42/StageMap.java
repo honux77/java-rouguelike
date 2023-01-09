@@ -6,11 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Map {
+public class StageMap {
 
     private GameObject[][] mapData;
 
-    public Map(String filename) throws IOException {
+    public StageMap(String filename) throws IOException {
         var rawMapData = readTextData(filename);
         setMapData(rawMapData);
 
