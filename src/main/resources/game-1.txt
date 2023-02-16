@@ -1,15 +1,15 @@
 Player
 initial,name,hp,mp,atk,def,gold,potion
 @,Pino,30,5,3,3,0,0
-End Player
+End
 
-Monster
+Monsters
 initial,name,hp,atk,def,atk_plus,def_plus,gold
 O,Slime,6,4,2,1,1,1
 S,Snake,9,5,3,2,2,2
 W,Bat,10,6,2,3,3,3
 Q,Boss,20,10,5,10,10,10
-End Monster
+End
 
 Stage 1
 ===============
@@ -17,4 +17,4 @@ Stage 1
 |W..W.........|
 |S.@....O....S|
 ===============
-End Stage
+End

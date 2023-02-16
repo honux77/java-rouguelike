@@ -11,15 +11,14 @@ import java.util.Map;
 
 public class DataReader {
 
-    private final static String DATA_FILE = "data/game.txt";
     private static Map<String, List<String>> rawData;
     private static DataReader instance;
 
     static {
         try {
-            instance = new DataReader();
+            new DataReader();
         } catch (IOException e) {
-            System.err.println("심각한 오류: 데이터 파일을 읽는 중 오류가 발생했습니다.");
+            System.err.println("오류: 데이터 파일을 읽지 못했습니다.");
             e.printStackTrace();
             System.exit(255);
         }
@@ -30,12 +29,27 @@ public class DataReader {
         readAllInfo();
     }
 
-    public static List<String> getRawData(String key) {
+    public static List<String> getPlayerData() {
+        return rawData.get("Player");
+    }
+
+    public static List<String> getMonsterData() {
+        return rawData.get("Monsters");
+    }
+
+    public static List<String> getStageData() {
+        return rawData.get("Stage 1");
+    }
+
+
+    private static List<String> getRawData(String key) {
         return rawData.get(key);
     }
 
     private static void readAllInfo() throws IOException {
-        Path path = Paths.get(DATA_FILE);
+        final String END = "End";
+        final String PATH = "data/game.txt";
+        Path path = Paths.get(PATH);
         var allLines = Files.readAllLines(path);
 
         boolean begin = true;
@@ -43,10 +57,11 @@ public class DataReader {
         List <String> data = new ArrayList<>();
 
         for (String line: allLines) {
+            if (line.length() == 0) continue;
             if (begin) {
                 key = line;
                 begin = false;
-            } else if (line.contains(key)) {
+            } else if (line.contains(END)) {
                 rawData.put(key, data);
                 begin = true;
                 data = new ArrayList<>();

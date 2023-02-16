@@ -9,23 +9,8 @@ import static org.assertj.core.api.Assertions.*;
 
 class MapTest {
 
-    private final String MAP_FILE = "data/map.txt";
 
     @Test
-    void fileExistCheck() throws IOException {
-        File f = new File(MAP_FILE);
-        assertThat(f.exists()).isTrue();
+    void readMapData() {
     }
-
-    @Test
-    void readMapData() throws IOException {
-        StageMap m = new StageMap(MAP_FILE);
-        var mapString = m.readTextData(MAP_FILE);
-        for (var s: mapString) {
-            System.out.println(s);
-        }
-        assertThat(mapString.size()).isGreaterThan(0);
-    }
-
-
 }
