@@ -2,15 +2,10 @@ package kr.seoul42;
 
 public class Location {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Location(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
     }
