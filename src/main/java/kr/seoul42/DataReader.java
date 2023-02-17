@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class DataReader {
 
-    private static Map<String, List<String>> rawData;
+    private static Map<String, List<String[]>> rawData;
     private static DataReader instance;
 
     static {
@@ -29,21 +29,16 @@ public class DataReader {
         readAllInfo();
     }
 
-    public static List<String> getPlayerData() {
-        return rawData.get("Player");
+    public static String[] getPlayerData() {
+        return rawData.get("Player").get(0);
     }
 
-    public static List<String> getMonsterData() {
+    public static List<String[]> getMonsterData() {
         return rawData.get("Monsters");
     }
 
-    public static List<String> getStageData() {
+    public static List<String[]> getStageData() {
         return rawData.get("Stage 1");
-    }
-
-
-    private static List<String> getRawData(String key) {
-        return rawData.get(key);
     }
 
     private static void readAllInfo() throws IOException {
@@ -52,22 +47,33 @@ public class DataReader {
         Path path = Paths.get(PATH);
         var allLines = Files.readAllLines(path);
 
-        boolean begin = true;
+        int begin = 0;
         String key = "";
-        List <String> data = new ArrayList<>();
+        List <String[]> data = new ArrayList<>();
 
         for (String line: allLines) {
             if (line.length() == 0) continue;
-            if (begin) {
-                key = line;
-                begin = false;
-            } else if (line.contains(END)) {
+            if (line.contains(END)) {
                 rawData.put(key, data);
-                begin = true;
+                begin = 0;
                 data = new ArrayList<>();
-            } else {
-                data.add(line);
+                continue;
             }
+            switch (begin) {
+                case 0:
+                    //set key
+                    key = line;
+                    begin++;
+                    break;
+                case 1:
+                    //ignore header line
+                    begin++;
+                    break;
+                default:
+                    data.add(line.split(","));
+            }
+
+
         }
     }
 }

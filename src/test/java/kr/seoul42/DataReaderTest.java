@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+import static kr.seoul42.GameUtil.*;
 
 class DataReaderTest {
 
@@ -12,8 +13,9 @@ class DataReaderTest {
     void getPlayer() {
         final String PLAYER="Player";
         var playerInfo = DataReader.getPlayerData();
-        assertThat(playerInfo.size()).isGreaterThan(0);
-        System.out.println(playerInfo);
+        assertThat(playerInfo.length).isGreaterThan(0);
+        printStringArray(playerInfo);
+
     }
 
     @Test
@@ -22,7 +24,9 @@ class DataReaderTest {
         final String MONSTERS="Monsters";
         var monsters = DataReader.getMonsterData();
         assertThat(monsters.size()).isGreaterThan(0);
-        System.out.println(monsters);
+        for (var m: monsters) {
+            printStringArray(m);
+        }
     }
 
     @Test
@@ -31,7 +35,9 @@ class DataReaderTest {
         final String STAGE_ONE="Stage 1";
         var map = DataReader.getStageData();
         assertThat(map.size()).isGreaterThan(0);
-        System.out.println(map);
+        for (var m: map) {
+            printStringArray(m);
+        }
     }
 
 
