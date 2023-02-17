@@ -4,7 +4,7 @@ import static kr.seoul42.GameUtil.*;
 
 public class Monster extends GameObject{
 
-    private String name;
+    private final String name;
     private int hp;
     private final int atk;
     private final int def;
@@ -21,6 +21,34 @@ public class Monster extends GameObject{
         atkPlus = stoi(data, 5);
         defPlus = stoi(data, 6);
         gold = stoi(data, 7);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getAtk() {
+        return atk;
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public int getAtkPlus() {
+        return atkPlus;
+    }
+
+    public int getDefPlus() {
+        return defPlus;
+    }
+
+    public int getGold() {
+        return gold;
     }
 
     @Override

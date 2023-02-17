@@ -11,22 +11,19 @@ import java.util.Map;
 
 public class DataReader {
 
-    private static Map<String, List<String[]>> rawData;
-    private static DataReader instance;
+    private static final Map<String, List<String[]>> rawData = new HashMap<>();
+
+    private DataReader() {
+    }
 
     static {
         try {
-            new DataReader();
+            readAllInfo();
         } catch (IOException e) {
             System.err.println("오류: 데이터 파일을 읽지 못했습니다.");
             e.printStackTrace();
             System.exit(255);
         }
-    }
-
-    private DataReader() throws IOException {
-        rawData = new HashMap<>();
-        readAllInfo();
     }
 
     public static String[] getPlayerData() {
@@ -49,9 +46,9 @@ public class DataReader {
 
         int begin = 0;
         String key = "";
-        List <String[]> data = new ArrayList<>();
+        List<String[]> data = new ArrayList<>();
 
-        for (String line: allLines) {
+        for (String line : allLines) {
             if (line.length() == 0) continue;
             if (line.contains(END)) {
                 rawData.put(key, data);

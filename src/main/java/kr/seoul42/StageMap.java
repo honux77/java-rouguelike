@@ -1,15 +1,15 @@
 package kr.seoul42;
 
+import java.util.List;
+
 public class StageMap {
 
-    private GameObject[][] mapData;
-
-
+    private List<GameObject> mapData;
 
 
     private void setMapData() {
-        final String MAP = "Map";
         var rawMapData = DataReader.getStageData();
+
 
     }
 
